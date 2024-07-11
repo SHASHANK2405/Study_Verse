@@ -6,19 +6,18 @@ const mailSender = require("../utils/mailSender")
 const mongoose = require("mongoose")
 const {
   courseEnrollmentEmail,
-} = require("../mail/templates/courseEnrollmentEmail")
-const { paymentSuccessEmail } = require("../mail/templates/paymentSuccessEmail")
+} = require("../mail/temp/courseEnrollmentEmail")
+const { paymentSuccessEmail } = require("../mail/temp/paymentSuccessEmail")
 const CourseProgress = require("../models/CourseProgress")
 
 //initiate the razorpay order
-exports.capturePayment = async () => {
-  const {courses} = req.body;
+exports.capturePayment = async (req , res) => {
+  const { courses } = req.body;
   const userId = req.user.id;
 
   if(Course.length === 0) {
     return res.json({success:false, message:"Please provide Course Id"});
   }
-
   let totalAmount = 0;
 
   for(const course_id of courses) {
@@ -42,7 +41,7 @@ exports.capturePayment = async () => {
   }
 
   const options = {
-    amout: totalAmount * 100,
+    amount: totalAmount * 100,
     currency:"INR",
     receipt: Math.random(Date.now()).toString(),
   }
