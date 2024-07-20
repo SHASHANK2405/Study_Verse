@@ -26,6 +26,7 @@ import Catalog from './pages/Catalog';
 import CourseDetails from './pages/CourseDetails';
 import ViewCourse from './pages/ViewCourse';
 import VideoDetailsSidebar from './components/core/ViewCourse/VideoDetailsSidebar';
+import VideoDetails from './components/core/ViewCourse/VideoDetails';
 
 function App() {
 
@@ -133,16 +134,14 @@ function App() {
                     </PrivateRoute>
                 }>
 
-                {
-                    user?.accountType === ACCOUNT_TYPE.STUDENT && (
+                {user?.accountType === ACCOUNT_TYPE.STUDENT && (
                     <>
-                    <Route 
+                    <Route
                         path="view-course/:courseId/section/:sectionId/sub-section/:subSectionId"
-                        element={<VideoDetailsSidebar />}
+                        element={<VideoDetails />}
                     />
                     </>
-                    )
-                }
+                )}
 
                 </Route>
 
