@@ -28,6 +28,7 @@ import ViewCourse from './pages/ViewCourse';
 import VideoDetailsSidebar from './components/core/ViewCourse/VideoDetailsSidebar';
 import VideoDetails from './components/core/ViewCourse/VideoDetails';
 import InstructorSection from './components/core/HomePage/InstructorSection';
+import Instructor from './components/core/Dashboard/InstructorDashboard/Instructor';
 
 function App() {
 
@@ -119,7 +120,7 @@ function App() {
                     {
                         user?.accountType === ACCOUNT_TYPE.INSTRUCTOR && (
                         <>
-                            <Route path="dashboard/instructor" element={<InstructorSection />} />
+                            <Route path="dashboard/instructor" element={<Instructor />} />
                             <Route path="dashboard/add-course" element={<AddCourse />} />
                             <Route path="dashboard/my-courses" element={<MyCourses />} />
                             <Route path="dashboard/edit-course/:courseId" element={<EditCourse />} />
